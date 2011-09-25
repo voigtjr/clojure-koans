@@ -10,16 +10,8 @@
         acc
         (recur (dec n) (not acc)))))
 
-; Needs refactoring:
-;  destructuring
-;  use recur
-;  maybe reduce
 (defn recursive-reverse [coll]
-  (let [a (first coll) 
-        more (next coll)]
-    (if more
-      (conj (recursive-reverse more) a)
-      [a])))
+  (reduce #(cons %2 %1) '() coll))
 
 (defn factorial [n]
   (reduce * 1N (range 1 (inc n))))
